@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(222, 84%, 4.9%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(222, 84%, 4.9%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(222, 84%, 4.9%);
+  --primary: hsl(221, 83%, 53%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(210, 40%, 96%);
+  --secondary-foreground: hsl(222, 84%, 4.9%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215, 16%, 47%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(222, 84%, 4.9%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --ring: hsl(222, 84%, 4.9%);
+  --dc-navy: hsl(221, 83%, 53%);
+  --dc-orange: hsl(21, 90%, 48%);
+  --dc-light-orange: hsl(25, 95%, 85%);
+  --dc-gray: hsl(215, 16%, 47%);
+  --dc-light-gray: hsl(210, 40%, 98%);
+  --dc-border: hsl(214, 32%, 91%);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: hsl(222, 84%, 4.9%);
+  --foreground: hsl(210, 40%, 98%);
+  --card: hsl(222, 84%, 4.9%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --popover: hsl(222, 84%, 4.9%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --primary: hsl(210, 40%, 98%);
+  --primary-foreground: hsl(222, 84%, 4.9%);
+  --secondary: hsl(217, 32%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 32%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --accent: hsl(217, 32%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 32%, 17%);
+  --input: hsl(217, 32%, 17%);
+  --ring: hsl(212, 32%, 25%);
+  --dc-navy: hsl(221, 83%, 53%);
+  --dc-orange: hsl(21, 90%, 48%);
+  --dc-light-orange: hsl(25, 95%, 85%);
+  --dc-gray: hsl(215, 16%, 47%);
+  --dc-light-gray: hsl(210, 40%, 98%);
+  --dc-border: hsl(214, 32%, 91%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Safe areas pour mobiles */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* Responsive improvements */
+  .responsive-chart {
+    width: 100% !important;
+    height: 300px !important;
+  }
+  
+  @media (max-width: 768px) {
+    .responsive-chart {
+      height: 250px !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .responsive-chart {
+      height: 200px !important;
+    }
+  }
+  
+  /* Mobile text and spacing adjustments */
+  @media (max-width: 640px) {
+    .text-2xl {
+      @apply text-xl;
+    }
+    
+    .text-xl {
+      @apply text-lg;
+    }
+    
+    .space-y-6 > * + * {
+      @apply mt-4;
+    }
+    
+    .gap-6 {
+      @apply gap-4;
+    }
+    
+    .p-6 {
+      @apply p-4;
+    }
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* Amélioration tactile mobile */
+  @media (hover: none) and (pointer: coarse) {
+    button, .touchable {
+      -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+      min-height: 44px; /* Taille minimum tactile iOS */
+      min-width: 44px;
+    }
+  }
+  
+  /* Classes utilitaires datacenter */
+  .dc-navy {
+    color: var(--dc-navy);
+  }
+  .dc-orange {
+    color: var(--dc-orange);
+  }
+  .bg-dc-navy {
+    background-color: var(--dc-navy);
+  }
+  .bg-dc-orange {
+    background-color: var(--dc-orange);
+  }
+  .bg-dc-light-gray {
+    background-color: var(--dc-light-gray);
+  }
+  .border-dc-border {
+    border-color: var(--dc-border);
+  }
+  .text-dc-gray {
+    color: var(--dc-gray);
+  }
+
+  /* Animation pour la barre de progression */
+  @keyframes slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
